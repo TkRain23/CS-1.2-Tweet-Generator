@@ -2,7 +2,6 @@ import sys
 import time
 import operator
 from collections import Counter
-# story = open('basic_text.txt', 'r').read().split()
 
 
 def dictionary_histogram(story):
@@ -22,7 +21,7 @@ def dictionary_histogram(story):
     top_5_words = (Counter(recurrence).most_common(5))
     print("\nThe Five Most Common Words Are:\n")
     for key, value in top_5_words:
-        print(("     {:<10s} \t appearing {:<4d} times").format(key, value))
+        print(("     {:<10s} \t appearing {} times").format(key, value))
 
     bottom_5_words = (Counter(recurrence).most_common()[:-6:-1])
     print("\nThe Five Least Common Words Are:\n")
@@ -30,6 +29,30 @@ def dictionary_histogram(story):
         print(("     {:<10s} \t appearing {} times").format(key, value))
 
     return recurrence
+
+
+def count_histogram(story):
+    """
+    Take in a source of text to return a histogram.
+
+    The histogram data structure stores each unique word along
+    with the number of times the word appears in the source text
+    """
+    count = Counter()
+    for word in story:
+        count[word] += 1
+
+    print(count)
+
+    top_5_words = (Counter(count).most_common(5))
+    print("\nThe Five Most Common Words Are:\n")
+    for key, value in top_5_words:
+        print(("     {:<10s} \t appearing {} times").format(key, value))
+
+    bottom_5_words = (Counter(count).most_common()[:-6:-1])
+    print("\nThe Five Least Common Words Are:\n")
+    for key, value in bottom_5_words:
+        print(("     {:<10s} \t appearing {} times").format(key, value))
 
 
 def list_histogram(story):
@@ -77,14 +100,12 @@ def tuples_histogram(story):
 
 def unique_words(recurrence):
     """Take in a histogram to return the total count of unique words."""
-
     unique_word_count = ("There are {} unique words from this text source.").format(len(recurrence))
     print(("\n{}\n").format(unique_word_count))
 
 
 def frequency(word, recurrence):
     """Take in a word and histogram to return the frequency of the word."""
-
     print(("The word '{}' appears {} times.").format(word, recurrence.get(word)))
 
 
