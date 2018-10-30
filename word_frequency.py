@@ -1,9 +1,11 @@
-import random
 import sys
+import time
+import operator
 from collections import Counter
+# story = open('basic_text.txt', 'r').read().split()
 
 
-def histogram(story):
+def dictionary_histogram(story):
     """
     Take in a source of text to return a histogram.
 
@@ -20,14 +22,57 @@ def histogram(story):
     top_5_words = (Counter(recurrence).most_common(5))
     print("\nThe Five Most Common Words Are:\n")
     for key, value in top_5_words:
-        print(("     {} \t appearing {} times").format(key, value))
+        print(("     {:<10s} \t appearing {:<4d} times").format(key, value))
 
     bottom_5_words = (Counter(recurrence).most_common()[:-6:-1])
     print("\nThe Five Least Common Words Are:\n")
     for key, value in bottom_5_words:
-        print(("     {} \t appearing {} times").format(key, value))
+        print(("     {:<10s} \t appearing {} times").format(key, value))
 
     return recurrence
+
+
+def list_histogram(story):
+    """
+    Take in a source of text to return a histogram.
+
+    The histogram data structure stores each unique word along
+    with the number of times the word appears in the source text
+    """
+    list_of_words = []
+
+    for word in story:
+        if word not in list_of_words:
+            list_of_words.append([word, 1])
+        for item in list_of_words:
+            if item[0] == word:
+                item[1] += 1
+
+    print(sorted(list_of_words, key=operator.itemgetter(1)))
+    print(sorted(list_of_words, key=operator.itemgetter(1), reverse=True))
+
+    return list_of_words
+
+
+def tuples_histogram(story):
+    """
+    Take in a source of text to return a histogram.
+
+    The histogram data structure stores each unique word along
+    with the number of times the word appears in the source text
+    """
+    list_of_words = []
+
+    for word in story:
+        if word not in list_of_words:
+            list_of_words.append((word, story.count(word)))
+
+    print(list_of_words)
+
+    print(sorted(list_of_words, key=operator.itemgetter(1)))
+    print(sorted(list_of_words, key=operator.itemgetter(1), reverse=True))
+
+    return list_of_words
 
 
 def unique_words(recurrence):
@@ -44,8 +89,10 @@ def frequency(word, recurrence):
 
 
 if __name__ == '__main__':
-    story = open('basic_text.txt', 'r').read().split()
+    start_time = time.time()
+    story = open('dracula.txt', 'r').read().split()
     word = sys.argv[1]
-    recurrence = histogram(story)
+    recurrence = dictionary_histogram(story)
     unique_words(recurrence)
     frequency(word, recurrence)
+    print(("\nExecuted in: {0:.2f} seconds").format(time.time() - start_time))
