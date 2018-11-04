@@ -8,5 +8,5 @@ def random_words():
     print(*word_list, sep=' ', end=""),
     print('.')
 
-    
+
 random_words()
