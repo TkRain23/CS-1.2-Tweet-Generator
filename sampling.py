@@ -15,6 +15,8 @@ def weighted_random(histogram):
 
 
 def prove_unweighted(histogram, trials):
+    '''
+    '''
     proof_list = {}
     for i in range(trials):
         word = unweighted_random(histogram)
@@ -26,6 +28,8 @@ def prove_unweighted(histogram, trials):
 
 
 def prove_weighted(histogram, trials):
+    '''
+    '''
     proof_list = {}
     for i in range(trials):
         word = weighted_random(histogram)

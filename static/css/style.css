@@ -4,6 +4,11 @@ body {
     text-align: center;
 }
 
+p.sentence
+{
+    font-size: 20px;
+}
+
 .content {
         width: 50%;
         height: 50%;
