@@ -150,7 +150,7 @@ def frequency(word, recurrence):
     print(("The word '{}' appears {} times.").format(word, recurrence.get(word)))
 
 
-story = open('dracula.txt', 'r').read()
+story = open('basic_text.txt', 'r').read()
 print(count_histogram(story))
 
 # if __name__ == '__main__':
