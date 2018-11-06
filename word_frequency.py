@@ -12,23 +12,24 @@ def dictionary_histogram(story):
     with the number of times the word appears in the source text
     """
     recurrence = {}
+    story = story.split()
     for word in story:
-        if(word in recurrence):
+        if word in recurrence:
             recurrence[word] += 1
         else:
             recurrence[word] = 1
 
-    top_5_words = (Counter(recurrence).most_common(5))
-    print("\nThe Five Most Common Words Are:\n")
-    for key, value in top_5_words:
-        print(("     {:<10s} \t appearing {} times").format(key, value))
-
-    bottom_5_words = (Counter(recurrence).most_common()[:-6:-1])
-    print("\nThe Five Least Common Words Are:\n")
-    for key, value in bottom_5_words:
-        print(("     {:<10s} \t appearing {} times").format(key, value))
-
+    # top_5_words = (Counter(recurrence).most_common(5))
+    # print("\nThe Five Most Common Words Are:\n")
+    # for key, value in top_5_words:
+    #     print(("     {:<10s} \t appearing {} times").format(key, value))
+    #
+    # bottom_5_words = (Counter(recurrence).most_common()[:-6:-1])
+    # print("\nThe Five Least Common Words Are:\n")
+    # for key, value in bottom_5_words:
+    #     print(("     {:<10s} \t appearing {} times").format(key, value))
     return recurrence
+
 
 def count_histogram(story):
     """
@@ -150,10 +151,20 @@ def frequency(word, recurrence):
     print(("The word '{}' appears {} times.").format(word, recurrence.get(word)))
 
 
-story = open('basic_text.txt', 'r').read()
-print(count_histogram(story))
+def write_file(recurrence):
+    with open('histogram.txt', 'w+') as file:
+        file.write("{}".format(recurrence))
+        # for key in recurrence:
+        #     file.write("{}: {}\n".format(key, recurrence[key]))
 
-# if __name__ == '__main__':
+
+if __name__ == '__main__':
+    story = open('dracula.txt', 'r').read()
+    recurrence = dictionary_histogram(story)
+    print(recurrence)
+    write_file(recurrence)
+
+
 #     start_time = time.time()
 #     story = open('dracula.txt', 'r').read()
 #     word = sys.argv[1]

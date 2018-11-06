@@ -37,7 +37,8 @@ def prove_weighted(histogram, trials):
 
 
 if __name__ == '__main__':
-    histogram = {'one': 1, 'blue': 1, 'two': 1, 'fish': 4, 'red': 1}
+    # histogram = {'one': 1, 'blue': 1, 'two': 1, 'fish': 4, 'red': 1}
+    histogram = eval(open('histogram.txt', 'r').read())
     trials = 10000
     unweighted_random(histogram)
     weighted_random(histogram)
