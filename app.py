@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from sampling import weighted_random
 
 app = Flask(__name__)
@@ -18,4 +18,8 @@ def sentence_generator():
         word = weighted_random(histogram)
         sentence.append(word)
 
-    return " ".join(sentence)
+    # return " ".join(sentence)
+
+    sentence = " ".join(sentence)
+
+    return render_template("main.html", sentence=sentence)
