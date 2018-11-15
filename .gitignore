@@ -1,1 +1,4 @@
-venv/*
+venv/
+sampling.pyc
+app.pyc
+__pycache__/

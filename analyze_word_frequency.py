@@ -18,16 +18,6 @@ def dictionary_histogram(story):
             recurrence[word] += 1
         else:
             recurrence[word] = 1
-
-    # top_5_words = (Counter(recurrence).most_common(5))
-    # print("\nThe Five Most Common Words Are:\n")
-    # for key, value in top_5_words:
-    #     print(("     {:<10s} \t appearing {} times").format(key, value))
-    #
-    # bottom_5_words = (Counter(recurrence).most_common()[:-6:-1])
-    # print("\nThe Five Least Common Words Are:\n")
-    # for key, value in bottom_5_words:
-    #     print(("     {:<10s} \t appearing {} times").format(key, value))
     return recurrence
 
 
@@ -38,7 +28,6 @@ def count_histogram(story):
     The histogram data structure stores each unique word along
     with the number of times the word appears in the source text
     """
-
     histogram = []
 
     words = story.split()
@@ -70,31 +59,9 @@ def count_histogram(story):
             elif word_found and not word_appended:
                 histogram.append((count, [current_word]))
 
-    # for i in range(len(words)):
-    #     if not len(histogram[i][1]):
-    #         for tuple in histogram:
-    #         histogram.remove(histogram[i])
+    histogram.sort(key=lambda tuple: tuple[0])
 
-    histogram.sort(key=lambda tuple:tuple[0])
     return histogram
-
-    # count = Counter()dasf
-    # for word in story:
-    #     count[word] += 1
-    #
-    # print(count)
-    #
-    # top_5_words = (Counter(count).most_common(5))
-    # print("\nThe Five Most Common Words Are:\n")
-    # for key, value in top_5_words:
-    #     print(("     {:<10s} \t appearing {} times").format(key, value))
-    #
-    # bottom_5_words = (Counter(count).most_common()[:-6:-1])
-    # print("\nThe Five Least Common Words Are:\n")
-    # for key, value in bottom_5_words:
-    #     print(("     {:<10s} \t appearing {} times").format(key, value))
-    #
-    # return count
 
 
 def list_histogram(story):
@@ -154,12 +121,10 @@ def frequency(word, recurrence):
 def write_file(recurrence):
     with open('histogram.txt', 'w+') as file:
         file.write("{}".format(recurrence))
-        # for key in recurrence:
-        #     file.write("{}: {}\n".format(key, recurrence[key]))
 
 
 if __name__ == '__main__':
-    story = open('dracula.txt', 'r').read()
+    story = open('text/dracula.txt', 'r').read()
     recurrence = dictionary_histogram(story)
     print(recurrence)
     write_file(recurrence)
