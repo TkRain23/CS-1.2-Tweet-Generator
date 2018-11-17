@@ -1,4 +1,3 @@
-
 # main script, uses other modules to generate sentences
 
 from flask import Flask, render_template
