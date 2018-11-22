@@ -60,7 +60,7 @@ class LinkedList(object):
         temp = self.head  # initialize a temporary node equal to the head
         count = 0  # initialize count at zero
 
-        while (temp):  # while it is within the list
+        while temp:  # while it is within the list
             count += 1  # incrememnt the count (length) by one
             temp = temp.next  # change the temporary location to the next node
         return count  # return the length of the linked list
@@ -89,11 +89,9 @@ class LinkedList(object):
         if self.head is None:
             self.head = new_node
             self.tail = self.head
-
         else:
             new_node.next = self.head
             self.head = new_node
-
 
 
     def find(self, quality):
@@ -106,6 +104,8 @@ class LinkedList(object):
         while current:
             if quality(current.data):
                 return current.data
+            else:
+                current = current.next
         return None
 
 
@@ -117,21 +117,37 @@ class LinkedList(object):
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
-        current = self.head
-        previous = None
 
-        while current:
-            if current.data == item:
-                if not previous:
-                    self.head = self.head.next
+        if self.is_empty():
+            raise ValueError('Item not found: {}'.format(item))
+        else:
+            traverse = True
+            current = self.head
+            previous = None
+
+            while traverse:
+                if current.data == item:
+                    if previous:
+                        if self.tail == current:
+                            previous.next = None
+                            self.tail = previous
+                        else:
+                            previous.next = current.next
+                    else:
+                        if self.tail == self.head:
+                            self.head = None
+                            self.tail = None
+                        else:
+                            self.head = current.next
+                    traverse = False
+
                 else:
-                    previous.next = current.next
-            else:
-                previous = current
-                current = current.next
-
-        raise ValueError('Item not found: {}'.format(item))
-
+                    if not current.next:
+                        raise ValueError('Item not found: {}'.format(item))
+                    else:
+                        previous = current
+                        current = current.next
+            return current.data
 
 def test_linked_list():
     ll = LinkedList()
