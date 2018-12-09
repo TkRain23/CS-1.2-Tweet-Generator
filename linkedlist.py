@@ -108,6 +108,14 @@ class LinkedList(object):
                 current = current.next
         return None
 
+    def replace(self, item):
+        node = self.head
+        node_found = False
+        while node and not node_found:
+            if node.data[0] == item[0]:
+                node.data = item
+                node_found = True
+            node = node.next
 
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.

@@ -1,25 +1,158 @@
-body {
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    background: #eee;
-    text-align: center;
+@font-face {
+    font-family: "PersonifiedUX";
+    src: url("PersonifiedUXRegular.ttf");
 }
 
-p.sentence
+@font-face {
+    font-family: "earwig-factory";
+    src: url("earwig factory rg.ttf");
+}
+
+@font-face {
+    font-family: "southpark";
+    src: url("south park.ttf");
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body
 {
-    font-size: 20px;
+    background-color: #9BDDE9;
 }
 
-.content {
-        width: 50%;
-        height: 50%;
+.container {
+    position: relative;
+}
 
-        position:absolute; /*it can be fixed too*/
-        left:0; right:0;
-        top:0; bottom:0;
-        margin:auto;
+#background {
+    width: 100%;
+    position: relative;
+    z-index: 0;
+    pointer-events: none;
+}
 
-        /*this to solve "the content will not be cut when the window is smaller than the content": */
-        max-width:100%;
-        max-height:100%;
-        overflow:auto;
-    }
+#cartman {
+    top: 40%;
+    left: 35%;
+    position: absolute;
+    width: 25%;
+    z-index: 2;
+}
+
+#dialogue {
+    position: absolute;
+    top: 85%;
+    left: 26%;
+    width: 45%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+#menu {
+    position: absolute;
+    top: 50%;
+    left: 56%;
+    z-index: 1;
+    width: 25%;
+    pointer-events: none;
+}
+
+.text {
+    position: absolute;
+    font-size: 1.2vw;
+    color: white;
+    top: 86.7%;
+    width: 29%;
+    right: 36.5%;
+    z-index: 4;
+    font-family: PersonifiedUX;
+    line-height: 110%;
+}
+
+.title {
+    position: absolute;
+    font-size: 6vw;
+    color: #D9A34C;
+    z-index: 5;
+    top: -7%;
+    left: 5%;
+    text-align: center;
+    font-family: southpark;
+    pointer-events: none;
+}
+
+.repo {
+    font-family: earwig-factory;
+    font-size: 3vw;
+    position: absolute;
+    bottom: 35%;
+    left: 65%;
+    z-index: 5;
+    color: white;
+}
+
+.tweet {
+    font-family: earwig-factory;
+    font-size: 3vw;
+    position: absolute;
+    bottom: 27.3%;
+    left: 65%;
+    z-index: 5;
+    color: black;
+}
+
+.info {
+    font-family: earwig-factory;
+    font-size: 2.5vw;
+    position: absolute;
+    bottom: 19.5%;
+    left: 68%;
+    z-index: 5;
+    color: white;
+    transform: rotate(11deg);
+}
+
+.name {
+    font-family: earwig-factory;
+    font-size: 2vw;
+    position: absolute;
+    bottom: 3.95%;
+    left: 64.8%;
+    z-index: 5;
+    color: black;
+    transform: rotate(-23deg);
+    pointer-events: none;
+}
+
+#cartman:hover {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: 1;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+img,p:not(.text) {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}

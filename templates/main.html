@@ -1,12 +1,52 @@
+<!--
+                    _._
+                __.{,_.).__
+             .-"           "-.
+           .'  __.........__  '.
+          /.-'`___.......___`'-.\
+         /_.-'` /   \ /   \ `'-._\
+         |     |   '/ \'   |     |
+         |      '-'     '-'      |   ---  “Respect mah authoritah!”
+         ;                       ;
+         _\         ___         /_
+        /  '.'-.__  ___  __.-'.'  \
+      _/_    `'-..._____...-'`    _\_
+     /   \           .           /   \
+     \____)         .           (____/
+         \___________.___________/
+           \___________________/
+          (_____________________)
+-->
+
 <html>
-  <head>
-    <title>Dracula Quotes</title>
+
+<head>
+    <title>Cartman Tweet Generator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  </head>
-  <body>
-      <div class="content">
-          <img src="https://media.tenor.com/images/16ea9dd38b974f8dac4a1efc17ea8810/tenor.gif" alt="spooky">
-          <p class="sentence">{{sentence}}</p>
-      </div>
-  </body>
+    <link rel="shortcut icon" type="image/png" href="./static/assets/favicon-32x32.png"/>
+</head>
+
+<body>
+    <div class="container">
+        <img src="./static/assets/bg.png" alt="background" class="image" id="background">
+        <p class="title">Cartman Tweet Generator</p>
+        <a href="/"><img src="./static/assets/cartman.png" alt="cartman" class="image" id="cartman"></a>
+        <img src="./static/assets/dialogue.png" alt="dialogue" class="image" id="dialogue">
+        <img src="./static/assets/menu.png" alt="menu" class="image" id="menu">
+        <p class="text">{{sentence}}</p>
+        <a href="https://github.com/TkRain23/CS-1.2-Tweet-Generator">
+            <p class="repo">repo</p>
+        </a>
+        <a href="#" onclick="return confirm('Tweet Functionality Coming Soon (๑˃ᴗ˂)ﻭ');">
+            <p class="tweet">tweet</p>
+        </a>
+        <a href="#" onclick="return confirm('Blog Post Coming Soon (๑˃ᴗ˂)ﻭ');">
+            <p class="info">info</p>
+        </a>
+        <a href="#">
+            <p class="name">eric</p>
+        </a>
+    </div>
+</body>
+
 </html>

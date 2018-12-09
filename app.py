@@ -1,9 +1,13 @@
 # main script, uses other modules to generate sentences
 
 from flask import Flask, render_template
-from stochastic_sampling import weighted_random
+# from stochastic_sampling import weighted_random
+import markov
+import re
 
 app = Flask(__name__)
+
+app.markov = markov.main()
 
 histogram = eval(open('histogram.txt', 'r').read())
 
@@ -18,12 +22,7 @@ def hello():
 def sentence_generator():
     """
     """
-    sentence = []
+    final_sentence = app.markov.create_sentence()
+    # " ".join(final_sentence.split(r'(.+|!++)')[:-1])
 
-    for i in range(10):
-        word = weighted_random(histogram)
-        sentence.append(word)
-
-    sentence = " ".join(sentence)
-
-    return render_template("main.html", sentence=sentence)
+    return render_template("main.html", sentence=final_sentence)

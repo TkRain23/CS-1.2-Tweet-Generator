@@ -10,17 +10,24 @@ def unweighted_random(histogram):
 
 
 def weighted_random(histogram):
-    """
-    """
-    word_count_total = sum(histogram.values())
-    current_count = 0
-    destination_count = random.randint(0, word_count_total)
+    '''This function will return a random word based on a
+    weighted probability -use random.randint'''
 
-    for word, frequency in histogram.items():
-        if current_count >= destination_count:
+    # converts list of keys and values
+    words, weights = zip(*histogram.items())
+
+    list_of_weight = []
+
+    current_weight = 0
+    for weight in weights:
+        current_weight += weight
+        list_of_weight.append(current_weight)
+
+    rand_num = random.randint(1, current_weight)
+
+    for word, weight in zip(words, list_of_weight):
+        if rand_num <= weight:
             return word
-        else:
-            current_count += frequency
 
 
 def proof(histogram):
