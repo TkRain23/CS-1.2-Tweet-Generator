@@ -10,7 +10,7 @@ import random
 
 class Markov(dict):
 
-    def __init__(self, word_list=None, order=5):
+    def __init__(self, word_list=None, order=6):
         super(Markov, self).__init__() # initilizes the dictionary that you're inheriting
         self.empty = True  # if the markov is empty, path hasn't been started
         self.order = order
@@ -85,7 +85,7 @@ class Markov(dict):
         for i in range(0, sentence_length):
             # pick a word from the Dictogram
             while next_word is None:
-                key = keys[random.randint(0, len(keys))]  # randomly printing none, but why
+                keys = keys[random.randint(0, len(keys))]  # randomly printing none, but why
                 next_word = weighted_random(self[key])
             # make a new instance of a tuple to find next value
             print("=== TUPLE AS LIST ===")
